@@ -27,6 +27,7 @@ const checkAvailableSeats = async (totalSeats, date, slotId, screenId) => {
 };
 
 exports.bookTicket = async (req, res) => {
+  try {
   logger.info("req come at bookTicket() controller started");
   const { date, slotId, screenId, seatNo } =req.body;
   if (!date || !slotId || !screenId || !seatNo) {
@@ -95,11 +96,15 @@ exports.bookTicket = async (req, res) => {
       logger.info("req come at bookTicket() controller Ended");
       return;
     }
-    console.log(checkSeatAvaibility);
   } else {
     logger.info("req come at bookTicket() controller Ended");
     res.status(400).send(`all seats are booked. please choose show`);
   }
+} catch (error) {
+  logger.error("req come at bookTicket() - Error Occured");
+  res.status(400).send("something went wrong!");
+  return;
+}
 };
 
 exports.checkAvailableSeats = async (req, res) => {
@@ -135,7 +140,6 @@ exports.checkAvailableSeats = async (req, res) => {
   }
 };
 
-
 exports.checkBookedSeats = async (req, res) => {
   try {
     logger.info("req come at checkBookedTicket() controller started");
@@ -155,7 +159,7 @@ exports.checkBookedSeats = async (req, res) => {
     });
     logger.info("req come at checkBookedTicket() controller Ended");
     res.json({
-      message: "succefully fetch booked seats",
+      message: "successfully fetch booked seats",
        bookedSeats,
     });
     return;
@@ -184,7 +188,7 @@ exports.checkCanceledSeats = async (req, res) => {
       },
     });
     res.json({
-      message: "succefully fetch cencled seats",
+      message: "successfully fetch canceled seats",
       cancledSeats,
     });
     logger.info("req come at checkCanceledTicket() controller Ended");
@@ -214,7 +218,7 @@ exports.cancelTicket = async (req, res) => {
       },
     });
     res.json({
-      message: "succefully canceled ticket",
+      message: "successfully canceled ticket",
       canceledSeats,
     });
     logger.info("req come at cancelTicket() controller ended");
