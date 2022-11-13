@@ -2,21 +2,23 @@ require('dotenv').config();
 let cors = require('cors');
 const createError = require('http-errors');
 const express = require('express');
+const router = require('./src/routes/Router');
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
 
 
 
 const app = express();
-app.use(cors({origin : "*",}));
 const port = process.env.PORT || 5000;
+app.use(cors({origin : "*",}));
 app.use(express.json())
 
 
-const router = require('./src/routes/Router');
 
 // All routes
 app.use("/api", router);
-
-
+// swagger
+app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 //  home route
 app.get("/", async (req, res) => {
   res.json({ message: "Welcome to ticket booking app." });

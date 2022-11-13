@@ -1,0 +1,217 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/timeslots": {
+      "get": {
+        "tags":["timeslots controller"],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/screens": {
+      "get": {
+        "tags":["screen controller"],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/ticket/available": {
+      "get": {
+        "tags":["ticket controller"],
+        "description": "date should be in formate YYYY-MM-DD",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "example": "2022-11-13",
+            "type": "string"
+          },
+          {
+            "name": "slotId",
+            "in": "query",
+            "example": "1",
+            "type": "string"
+          },
+          {
+            "name": "screenId",
+            "in": "query",
+            "example": "1",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/ticket/book": {
+      "post": {
+        "tags":["ticket controller"],
+        "description": "date should be in formate YYYY-MM-DD",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "example": "2022-11-13",
+                  "required": true,
+                  "type":"string"
+                },
+                "slotId": {
+                  "example": "1",
+                  "required": true,
+                  "type":"string"
+                },
+                "screenId": {
+                  "example": "1",
+                  "required": true,
+                  "type":"string"
+                },
+                "seatNo": {
+                  "example": "1",
+                  "required": true,
+                  "type":"string"
+                },
+                "userName": {
+                  "example": "kuldeep",
+                  "required": true,
+                  "type":"string"
+                },
+                "mobileNo": {
+                  "example": "6232710975",
+                  "required": false,
+                  "type":"string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/ticket/booked": {
+      "get": {
+        "tags":["ticket controller"],
+        "description": "date should be in formate YYYY-MM-DD",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "type": "string",
+            "required":true
+          },
+          {
+            "name": "slotId",
+            "in": "query",
+            "type": "string",
+            "required":true
+          },
+          {
+            "name": "screenId",
+            "in": "query",
+            "type": "string",
+            "required":true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/ticket/cancel/{ticketNo}": {
+      "delete": {
+        "tags":["ticket controller"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "ticketNo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/ticket/canceled": {
+      "get": {
+        "tags":["ticket controller"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "type": "string",
+            "required":true
+          },
+          {
+            "name": "slotId",
+            "in": "query",
+            "type": "string",
+            "required":true
+          },
+          {
+            "name": "screenId",
+            "in": "query",
+            "type": "string",
+            "required":true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  }
+}

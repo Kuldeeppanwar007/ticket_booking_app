@@ -40,6 +40,11 @@ exports.bookTicket = async (req, res) => {
     attributes: ["availableSheets"],
     where: { screenId },
   });
+  if(!totalSeats){
+    logger.info("req come at bookTicket() controller Ended");
+    res.status(400).send(`invalid screen id`);
+    return;
+  }
   const checkBookedSeats = await db.models.tickets.findAll({
     attributes: [[sequelize.fn("COUNT", sequelize.col("Id")), "bookedSeats"]],
     where: {
@@ -102,6 +107,7 @@ exports.bookTicket = async (req, res) => {
   }
 } catch (error) {
   logger.error("req come at bookTicket() - Error Occured");
+  logger.error(error);
   res.status(400).send("something went wrong!");
   return;
 }
