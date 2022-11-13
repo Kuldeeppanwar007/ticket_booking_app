@@ -14,7 +14,7 @@
     "/timeslots": {
       "get": {
         "tags":["timeslots controller"],
-        "description": "",
+        "description": "to get no. time slots in a day",
         "parameters": [],
         "responses": {
           "200": {
@@ -29,7 +29,7 @@
     "/screens": {
       "get": {
         "tags":["screen controller"],
-        "description": "",
+        "description": "to get no of screens in theater",
         "parameters": [],
         "responses": {
           "200": {
@@ -44,7 +44,7 @@
     "/ticket/available": {
       "get": {
         "tags":["ticket controller"],
-        "description": "date should be in formate YYYY-MM-DD",
+        "description": "to get available seat and date should be in formate YYYY-MM-DD",
         "parameters": [
           {
             "name": "date",
@@ -71,7 +71,7 @@
     "/ticket/book": {
       "post": {
         "tags":["ticket controller"],
-        "description": "date should be in formate YYYY-MM-DD",
+        "description": "to book ticket and date should be in formate YYYY-MM-DD",
         "parameters": [
           {
             "name": "body",
@@ -126,23 +126,26 @@
     "/ticket/booked": {
       "get": {
         "tags":["ticket controller"],
-        "description": "date should be in formate YYYY-MM-DD",
+        "description": "to get booked tickets and date should be in formate YYYY-MM-DD",
         "parameters": [
           {
             "name": "date",
             "in": "query",
             "type": "string",
+            "example": "2022-11-13",
             "required":true
           },
           {
             "name": "slotId",
             "in": "query",
             "type": "string",
+            "example": "1",
             "required":true
           },
           {
             "name": "screenId",
             "in": "query",
+            "example": "1",
             "type": "string",
             "required":true
           }
@@ -160,7 +163,7 @@
     "/ticket/cancel/{ticketNo}": {
       "delete": {
         "tags":["ticket controller"],
-        "description": "",
+        "description": "to cancled ticket",
         "parameters": [
           {
             "name": "ticketNo",
@@ -182,24 +185,27 @@
     "/ticket/canceled": {
       "get": {
         "tags":["ticket controller"],
-        "description": "",
+        "description": "to get canceled tickets and date should be in formate YYYY-MM-DD",
         "parameters": [
           {
             "name": "date",
             "in": "query",
             "type": "string",
+            "example": "2022-11-13",
             "required":true
           },
           {
             "name": "slotId",
             "in": "query",
             "type": "string",
+            "example": "1",
             "required":true
           },
           {
             "name": "screenId",
             "in": "query",
             "type": "string",
+            "example": "1",
             "required":true
           }
         ],
