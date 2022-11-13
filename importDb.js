@@ -15,6 +15,4 @@ auto.run().then(data => {
   console.log(data.relations);   // relationships between moṇdels
   console.log(data.text)         // text of generated models
 });
-// // moment.tz.setDefault("America/New_York");
-// // console.log(moment(Date.now()).utc(false).utcOffset('+05:30').format("YYYY-MM-DD HH:mm:ss"))
-// // console.log(Date.now().getFullYear())
+

@@ -1,3 +1,4 @@
 /node_modules
 /models
+/logs
 git rm --cached .env
