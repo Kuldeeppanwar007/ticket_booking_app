@@ -41,10 +41,11 @@ http://localhost:5000/api-doc/
 
 ```sh
 .
-├── index.js
+├── index.js //main file
 ├── package.json
 ├── .env  // sample
 ├── importDb.js // for generate models from db schema
+├── swagger_output.json // for generate swagger documents
 └── src
     ├── controllers
     |   ├── screen.controler.js
