@@ -32,7 +32,7 @@ https://github.com/Kuldeeppanwar007/ticket_booking_app.git ./ticket_booking_app
 cd ticket_booking_app
 npm install
 ```
-## swagger documet
+## swagger document
 ```bash
 http://localhost:5000/api-doc/
 ```
