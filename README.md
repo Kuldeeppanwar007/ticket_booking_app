@@ -32,6 +32,10 @@ https://github.com/Kuldeeppanwar007/ticket_booking_app.git ./ticket_booking_app
 cd ticket_booking_app
 npm install
 ```
+## postman url
+```bash
+https://www.getpostman.com/collections/4434125cc1dd04bba553
+```
 
 ## Project structure
 
