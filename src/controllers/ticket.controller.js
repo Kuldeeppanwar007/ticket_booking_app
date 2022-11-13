@@ -34,7 +34,7 @@ exports.bookTicket = async (req, res) => {
     logger.info("req come at bookTicket() controller - Invalid parameters");
     return;
   }
-  console.log(date, slotId, screenId);
+ 
   const totalSeats = await db.models.screens.findOne({
     attributes: ["availableSheets"],
     where: { screenId },
@@ -52,8 +52,7 @@ exports.bookTicket = async (req, res) => {
 
   let totalSeat = parseInt(totalSeats.dataValues.availableSheets);
   let bookedSeat = parseInt(checkBookedSeats[0].dataValues.bookedSeats);
-  console.log(totalSeat);
-  console.log(bookedSeat);
+ 
   if (totalSeat > bookedSeat) {
     const checkSeatAvaibility = await db.models.tickets.findOne({
       where: {
@@ -200,9 +199,9 @@ exports.checkCanceledSeats = async (req, res) => {
 exports.cancelTicket = async (req, res) => {
   try {
     logger.info("req come at cancelTicket() controller started");
-    console.log("///");
+  
    const ticketNo = req.params.ticketNo
-   console.log(ticketNo);
+ 
     if (!ticketNo) {
       logger.error("req come at cancelTicket() - Invalid Ticket");
       res.status(400).json({ error: `invalid ticketNo` });
