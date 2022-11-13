@@ -1,12 +1,12 @@
-var DataTypes = require("sequelize").DataTypes;
-var _screens = require("./screens");
-var _tickets = require("./tickets");
-var _timeslots = require("./timeslots");
+let DataTypes = require("sequelize").DataTypes;
+let _screens = require("./screens");
+let _tickets = require("./tickets");
+let _timeslots = require("./timeslots");
 
 function initModels(sequelize) {
-  var screens = _screens(sequelize, DataTypes);
-  var tickets = _tickets(sequelize, DataTypes);
-  var timeslots = _timeslots(sequelize, DataTypes);
+  let screens = _screens(sequelize, DataTypes);
+  let tickets = _tickets(sequelize, DataTypes);
+  let timeslots = _timeslots(sequelize, DataTypes);
 
   tickets.belongsTo(screens, { as: "screen", foreignKey: "screenId"});
   screens.hasMany(tickets, { as: "tickets", foreignKey: "screenId"});
