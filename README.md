@@ -43,7 +43,8 @@ http://localhost:5000/api-doc/
 .
 ├── index.js
 ├── package.json
-├── .env
+├── .env  // sample
+├── importDb.js // for generate models from db schema
 └── src
     ├── controllers
     |   ├── screen.controler.js
